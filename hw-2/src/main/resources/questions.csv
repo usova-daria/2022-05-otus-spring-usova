@@ -1,0 +1,5 @@
+"What Spring project does not exist?", Spring Boot, Spring Data, Spring Migration, Spring Batch, 2
+"What is the default scope of a bean?", Singleton, Session, Prototype, Dependent, 0
+"List ways to provide configuration metadata to the spring container", XML-based config file, JSON-based config file, Java-based configuration, Annotation-based configuration, YAML-based config file, 0-2-3
+"Select a correct statement about bean scope", "In prototype scope, Spring scopes the bean definition to a single instance per Spring IoC container", "In prototype scope, a single bean definition has any number of object instances", "In prototype scope, a bean is defined as an HTTP request. This scope is valid only in a web-aware Spring ApplicationContext", 1
+"Which of the following stands true for spring beans?", "Spring beans are managed by the Spring IoC container", "Spring beans are instantiated, assembled, and otherwise managed by a Spring IoC container", "Spring beans are simple POJOs", "All of the above", 3

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="applicationRunner" class="com.otus.spring.ui.impl.ConsoleApplicationRunner">
+        <constructor-arg name="questionsService" ref="questionsService"/>
+        <constructor-arg name="questionsFormatter" ref="questionFormatter"/>
+        <constructor-arg name="printer" ref="printer"/>
+        <constructor-arg name="reader" ref="reader"/>
+        <constructor-arg name="resourceBundleHolder" ref="resourceBundleHolder"/>
+        <constructor-arg name="answersParser" ref="answersParser"/>
+    </bean>
+
+    <bean id="answersParser" class="com.otus.spring.ui.impl.AnswersParser">
+        <constructor-arg name="resourceBundleHolder" ref="resourceBundleHolder"/>
+    </bean>
+
+    <bean id="resourceBundleHolder" class="com.otus.spring.ui.impl.ResourceBundleHolderImpl">
+        <constructor-arg name="resourceBundleName" value="messages"/>
+    </bean>
+
+    <bean id="questionFormatter" class="com.otus.spring.ui.impl.QuestionsFormatter"/>
+
+    <bean id="printer" class="com.otus.spring.ui.impl.Printer"/>
+
+    <bean id="reader" class="com.otus.spring.ui.impl.Reader"/>
+
+    <bean id="questionsService" class="com.otus.spring.service.impl.QuestionsServiceImpl">
+        <constructor-arg name="questionsDao" ref="questionsDao"/>
+    </bean>
+
+    <bean id="questionsDao" class="com.otus.spring.dao.impl.CsvQuestionsDao">
+        <constructor-arg name="questionsSource" value="questions.csv"/>
+        <constructor-arg name="parser" ref="csvParser"/>
+        <constructor-arg name="mapper" ref="questionMapper"/>
+    </bean>
+
+    <bean id="questionMapper" class="com.otus.spring.dao.mapper.QuestionMapper">
+        <constructor-arg name="validator" ref="questionValidator"/>
+    </bean>
+
+    <bean id="questionValidator" class="com.otus.spring.dao.validator.QuestionValidator">
+    </bean>
+
+    <bean id="csvParser" class="com.otus.spring.dao.impl.CsvRowParser">
+    </bean>
+
+</beans>
